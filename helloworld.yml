@@ -1,8 +1,5 @@
 ---
-- name: Hello World!
-  hosts: all
- 
-  tasks:
- 
-  - name: Hello World!
-    shell: echo "Hi! Tower is working."
+- name: remove CCZE
+  ansible.builtin.package:
+    name: ccze
+    state: absent
