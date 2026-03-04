@@ -1,0 +1,11 @@
+# remove the ccze package from the system and remove the configuration file for ccze
+
+- name: Remove ccze package
+  apt:
+    name: ccze
+    state: absent
+
+- name: Remove ccze configuration file
+  file:
+    path: /etc/ccze.conf
+    state: absent
