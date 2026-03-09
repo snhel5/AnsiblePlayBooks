@@ -1,8 +1,14 @@
 ---
-- name: Hello World!
+- name: remove CCZE
   hosts: all
  
   tasks:
  
   - name: Hello World!
     shell: echo "Hi! Tower is working."
+  
+  - name: Remove CCZE
+    become: yes 
+    package:
+      name: ccze
+      state: absent 
