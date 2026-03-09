@@ -1,11 +1,11 @@
 ---
 - name: remove CCZE
   hosts: all
- 
+  become: yes 
+
   tasks:
   
   - name: Remove CCZE
-    become: yes 
     package:
       name: ccze
       state: absent 
