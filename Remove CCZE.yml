@@ -6,6 +6,6 @@
   tasks:
   
   - name: Remove CCZE
-    package:
+    ansible.builtin.package:
       name: ccze
       state: absent 

@@ -1,8 +1,10 @@
+---
 - name: This command will run whoami
   hosts: all
   become: yes
 
   tasks:
+
   - name: Run whoami
     ansible.builtin.shell:
       cmd: whoami
