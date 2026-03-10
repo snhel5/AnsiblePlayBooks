@@ -1,0 +1,12 @@
+# This playbook will remove CCZE from the system
+---
+- name: remove CCZE
+  hosts: all
+  become: yes 
+
+  tasks:
+  
+  - name: Remove CCZE
+    ansible.builtin.package:
+      name: ccze
+      state: present
