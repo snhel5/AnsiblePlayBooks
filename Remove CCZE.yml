@@ -1,3 +1,4 @@
+# This playbook will remove CCZE from the system
 ---
 - name: remove CCZE
   hosts: all
