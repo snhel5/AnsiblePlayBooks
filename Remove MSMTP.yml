@@ -1,0 +1,22 @@
+# This playbook will remove MSMTP from the system
+---
+- name: remove MSMTP
+  hosts: all
+  become: yes 
+
+  tasks:
+  
+  - name: Remove MSMTP
+    ansible.builtin.package:
+      name: msmtp
+      state: absent 
+
+  - name: Remove MSMTP configuration file
+    ansible.builtin.file:
+      path: /etc/msmtprc
+      state: absent
+
+  - name: Remove link to MSMTP executable from /usr/sbin/sendmail
+    ansible.builtin.file:
+      path: /usr/sbin/sendmail
+      state: absent
