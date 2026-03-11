@@ -1,5 +1,0 @@
----
-- name: remove CCZE
-  ansible.builtin.package:
-    name: ccze
-    state: absent
