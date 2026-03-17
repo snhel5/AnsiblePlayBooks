@@ -18,5 +18,5 @@
 
   - name: Remove link to MSMTP executable from /usr/sbin/sendmail
     ansible.builtin.file:
-      src: /usr/sbin/sendmail
+      path: /usr/sbin/sendmail
       state: unlink
