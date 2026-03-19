@@ -1,0 +1,12 @@
+# This playbook will install CCZE on the system
+---
+- name: remove CCZE
+  hosts: all
+  become: yes 
+
+  tasks:
+  
+  - name: Install CCZE
+    ansible.builtin.package:
+      name: ccze
+      state: present
