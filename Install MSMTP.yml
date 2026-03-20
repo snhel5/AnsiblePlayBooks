@@ -1,12 +1,42 @@
-# This playbook will install CCZE on the system
+# This playbook will install MSMTP on the system
 ---
-- name: remove CCZE
+- name: install MSMTP
   hosts: all
   become: yes 
 
   tasks:
   
-  - name: Install CCZE
+  - name: Install MSMTP
     ansible.builtin.package:
-      name: ccze
-      state: present
+      name: msmtp
+      state: present 
+
+  - name: Create MSMTP configuration file
+    ansible.builtin.copy:
+      content: |
+        # Set default values for all following accounts.
+        defaults
+        auth           on
+        tls            on
+        tls_trust_file /etc/ssl/certs/ca-certificates.crt
+        logfile        /var/log/msmtp.log
+
+        # My Mail
+        account        hero-elzinga
+        host           mail.hero-elzinga.net
+        port           587
+        from           {{ hostvars[inventory_hostname]['ansible_user'] }}@enterprise.org
+        user           UU@hero-elzinga.net
+        password       R2!SKH4$G2C6&Mn4
+
+        # Set a default account
+        # This needs to be at the end!
+        account default: hero-elzinga
+      dest: /etc/msmtprc
+      mode: '0600'
+
+  - name: Create link to MSMTP executable in /usr/sbin/sendmail
+    ansible.builtin.file:
+      src: /usr/bin/msmtp
+      dest: /usr/sbin/sendmail
+      state: link
