@@ -25,7 +25,7 @@
         account        hero-elzinga
         host           mail.hero-elzinga.net
         port           587
-        from           {{ hostvars[inventory_hostname]['ansible_user'] }}@enterprise.org
+        from           {{ hostvars[inventory_hostname]['ansible_hostname'] }}@enterprise.org
         user           UU@hero-elzinga.net
         password       R2!SKH4$G2C6&Mn4
 
