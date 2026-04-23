@@ -45,9 +45,10 @@
     ansible.builtin.file:
       path: /var/log/msmtp.log
       state: touch
-      mode: '0655
+      mode:  0655
       owner: root
       group: root
       
   - name: Send test email using MSMTP
-    ansible.builtin.command: echo -e "Subject: Testmail\n\nMSMTP has sucessfully been installed on {{ hostvars[inventory_hostname]["ansible_hostname"] }}" | sendmail -v root@hero-elzinga.net
+    ansible.builtin.command:
+       cmd: echo -e "Subject: Testmail\n\nMSMTP has sucessfully been installed on {{ hostvars[inventory_hostname]['ansible_hostname'] }}" | sendmail -v root@hero-elzinga.net
