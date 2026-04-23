@@ -41,13 +41,13 @@
       dest: /usr/sbin/sendmail
       state: link
 
-  - name: Ensure MSMTP log file exists and has correct permissions
+  - name: Ensure MSMTP log file exists and has correct permissions 
     ansible.builtin.file:
       path: /var/log/msmtp.log
       state: touch
-      mode: '0655
+      mode: 0655
       owner: root
       group: root
       
-  - name: Send test email using MSMTP
-    ansible.builtin.command: echo -e "Subject: Testmail\n\nMSMTP has sucessfully been installed on {{ hostvars[inventory_hostname]["ansible_hostname"] }}" | sendmail -v root@hero-elzinga.net
+  - name: Test MSMTP configuration by sending a test email 
+    ansible.builtin.command: echo "This is a test email from Ansible" | msmtp --debug --from=hero-elzinga -t
