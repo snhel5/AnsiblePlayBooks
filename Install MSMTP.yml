@@ -50,5 +50,5 @@
       group: root
       
   - name: Send test email using MSMTP
-    ansible.builtin.command:
+    ansible.builtin.command: |
       cmd: echo -e "Subject: Testmail\n\nMSMTP has sucessfully been installed on {{ hostvars[inventory_hostname]['ansible_hostname'] }}" | sendmail -v root@hero-elzinga.net
